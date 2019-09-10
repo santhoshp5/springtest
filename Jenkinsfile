@@ -26,9 +26,11 @@ node {
     }
 
     stage('Build Image') {
-        sh 'oc start-build hello-world-0.1.0.jar  --from-dir='/var/lib/jenkins/jobs/samplede/jobs/samplede-example/workspace/target/.' --follow'
+   dir('./var/lib/jenkins/jobs/samplede/jobs/samplede-example/workspace/target/') {
+                  sh 'oc start-build hello-world-0.1.0.jar  --from-dir. --follow'
+                }  
     }
-}
+
 	
 /*	stage('Run Unit Tests & Sonar'){
       parallel(
