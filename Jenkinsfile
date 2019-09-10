@@ -21,8 +21,10 @@ node {
     } */   
  
     stage('Build Project') {
+	    steps {
       // build project via maven
       sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+    }
     }
 
     stage('Build Image') {
