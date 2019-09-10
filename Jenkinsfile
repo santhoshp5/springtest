@@ -30,7 +30,7 @@ node {
         script {
           openshift.withCluster() {
             openshift.withProject() {
-              def buildSelector =  openshift.startBuild("s2i-build", "--from-file=./test-app.jar")
+              def buildSelector =  openshift.startBuild("s2i-build", "--from-file=./hello-world-0.1.0.jar")
               buildSelector.logs('-f')
             }
           }
