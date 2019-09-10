@@ -25,8 +25,7 @@ node {
       sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
     }
 
-	stage('Build Image') {
-      steps {
+    stage('Build Image') { steps {
         script {
           openshift.withCluster() {
             openshift.withProject() {
@@ -37,14 +36,9 @@ node {
         }
       }
     }
-    /*stage('Build Image') {
-   dir('./var/lib/jenkins/jobs/samplede/jobs/samplede-example/workspace/target') {
-                  sh 'oc start-build sample  --from-dir="." --follow'
-                }  
-    }
 
 	
-	stage('Run Unit Tests & Sonar'){
+	/*stage('Run Unit Tests & Sonar'){
       parallel(
         publishJunitTestsResultsToJenkins: {
           echo "Publish junit Tests Results"
