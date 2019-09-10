@@ -25,7 +25,7 @@ node {
       sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
     }
 
-	stage('Build image') {
+	stage('Build Image') {
       steps {
         script {
           openshift.withCluster() {
