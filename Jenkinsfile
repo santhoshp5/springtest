@@ -24,6 +24,10 @@ node {
       // build project via maven
       sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
     }
+
+    stage('Build Image') {
+        sh 'oc start-build hello-world-0.1.0.jar  --from-dir='./var/lib/jenkins/jobs/samplede/jobs/samplede-example/workspace/target/.' --follow'
+     }
 	
 /*	stage('Run Unit Tests & Sonar'){
       parallel(
