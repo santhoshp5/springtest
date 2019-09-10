@@ -11,21 +11,22 @@ node {
     def dockerImageName = "hello-world-java"
     def dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${env.BUILD_NUMBER}"
     
-   stage('Clone Repo') { // for display purposes
+   /*stage('Clone Repo') { // for display purposes
       // Get some code from a GitHub repository
       git 'https://github.com/santhoshp5/springtest.git'
       // Get the Maven tool.
       // ** NOTE: This 'maven-3.6.1' Maven tool must be configured
       // **       in the global configuration.           
       mvnHome = tool 'M2'
-    }    
+    } */   
  
     stage('Build Project') {
       // build project via maven
       sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
     }
 
-    stage('Build Image') { steps {
+    stage('Build Image') {
+	steps {
         script {
           openshift.withCluster() {
             openshift.withProject() {
