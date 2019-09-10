@@ -27,7 +27,7 @@ node {
 
     stage('Build Image') {
    dir('./var/lib/jenkins/jobs/samplede/jobs/samplede-example/workspace/target') {
-                  sh 'oc start-build example  --from-dir="." --follow'
+                  sh 'oc start-build sample  --from-dir="." --follow'
                 }  
     }
 
