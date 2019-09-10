@@ -26,7 +26,7 @@ node {
     }
 
     stage('Build Image') {
-   dir('./var/lib/jenkins/jobs/samplede/jobs/samplede-example/workspace/target/hello-world-0.1.0.jar') {
+   dir('./var/lib/jenkins/jobs/samplede/jobs/samplede-example/workspace/target') {
                   sh 'oc start-build example  --from-dir="." --follow'
                 }  
     }
