@@ -24,7 +24,7 @@ node {
     sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
   }
     stage('Build Image') {
-    sh "oc start-build ciccdd --from-dir=target/hello-world-0.1.0.jar --follow"
+    sh "oc start-build ciccdd --from-file=/hello-world-0.1.0.jar --follow"
   }
 
 	
