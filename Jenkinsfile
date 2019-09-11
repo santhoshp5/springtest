@@ -19,30 +19,13 @@ node {
       // **       in the global configuration.           
       mvnHome = tool 'M2'
     } */   
- 
-    stage('Build Project') {
-	    steps {
-        script {
-      // build project via maven
-      sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
-    }
-		     }  
-	      }
-	
-    
-
-   stage('Build Image') {
-	steps {
-        script {
-          openshift.withCluster() {
-            openshift.withProject() {
-              def buildSelector =  openshift.startBuild("s2i-build", "--from-file=./hello-world-0.1.0.jar")
-              buildSelector.logs('-f')
-            }
-          }
-        }
-      }
-    }
+  stage('Build App') {
+    git url: "https://github.com/siamaksade/cart-service.git"
+    sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+  }
+    stage('Build Image') {
+    sh "oc start-build ciccdd --from-file=target/hello-world-0.1.0.jar --follow"
+  }
 
 	
 	/*stage('Run Unit Tests & Sonar'){
