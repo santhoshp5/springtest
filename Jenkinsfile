@@ -29,7 +29,7 @@ node {
   
     stage('Deploy') {
     openshiftDeploy depCfg: 'ciccdd'
-    openshiftVerifyDeployment depCfg: 'cart', replicaCount: 1, verifyReplicaCount: true
+    openshiftVerifyDeployment depCfg: 'ciccdd', replicaCount: 1, verifyReplicaCount: true
     }
 	
 	/*stage('Run Unit Tests & Sonar'){
