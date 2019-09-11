@@ -26,7 +26,11 @@ node {
     stage('Build Image') {
     sh "oc start-build ciccdd --from-file=target/hello-world-0.1.0.jar --follow"
   }
-
+  
+    stage('Deploy') {
+    openshiftDeploy depCfg: 'ciccdd'
+    openshiftVerifyDeployment depCfg: 'cart', replicaCount: 1, verifyReplicaCount: true
+    }
 	
 	/*stage('Run Unit Tests & Sonar'){
       parallel(
