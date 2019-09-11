@@ -20,7 +20,7 @@ node {
       mvnHome = tool 'M2'
     } */   
   stage('Build App') {
-    git url: "https://github.com/siamaksade/cart-service.git"
+    git url: "https://github.com/santhoshp5/springtest.git"
     sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
   }
     stage('Build Image') {
