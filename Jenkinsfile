@@ -24,9 +24,14 @@ node {
       // build project via maven
       sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
     }
-    
-
+	
     stage('Build Image') {
+            dir('./var/lib/jenkins/jobs/samplede/jobs/samplede-example/workspace/target/hello-world-0.1.0.jar') {
+                  sh 'oc start-build s2i-build  --from-dir. --follow'
+                }  
+	      }
+
+   /* stage('Build Image') {
 	steps {
         script {
           openshift.withCluster() {
@@ -37,7 +42,7 @@ node {
           }
         }
       }
-    }
+    }*/
 
 	
 	/*stage('Run Unit Tests & Sonar'){
