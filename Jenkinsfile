@@ -1,4 +1,4 @@
-def templateName = 'ciccdd' 
+def templateName = 'cicd' 
 pipeline {
     agent any
      tools
