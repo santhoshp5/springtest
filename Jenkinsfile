@@ -17,7 +17,7 @@ pipeline {
   stage('Build Image') {
      steps {
     unstash name:"jar"
-    sh "oc start-build ciccdd --from-file=target/hello-world-0.1.0.jar --follow"
+    sh "oc start-build ciccdd  --from-file=target/hello-world-0.1.0.jar --follow"
      }
   }
   stage('Deploy') {
