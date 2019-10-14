@@ -9,8 +9,6 @@ public class HelloController {
     
     @RequestMapping("/")
     public String index() {
-        System.out.println("ererererererererer");
-        System.out.println("sdfsdfsdf");
         return "Hello World\n";
     }
     
